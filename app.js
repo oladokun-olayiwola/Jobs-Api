@@ -33,7 +33,7 @@ const limiter = rateLimiter({
 app.use(limiter)
 
 
-app.use("/api/v1/auth", Authentication, AuthRouter);
+app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/jobs", Authentication, JobsRouter);
 
 app.use(notFound);
