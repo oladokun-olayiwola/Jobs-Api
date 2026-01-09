@@ -9,6 +9,7 @@ const Authentication = (req, res, next) => {
       throw new unAuthenticatedError("Access Unauthorized ");
     }
     const token = authKey.split(" ")[0];
+    console.log(token)
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { id, name } = decoded;
     req.user = { id, name };
