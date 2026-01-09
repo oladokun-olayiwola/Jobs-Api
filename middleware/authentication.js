@@ -8,7 +8,9 @@ const Authentication = (req, res, next) => {
     if (!authKey || !authKey.startsWith("Bearer ")) {
       throw new unAuthenticatedError("Access Unauthorized ");
     }
-    const token = authKey.split(" ")[1].trim();
+    const rawToken = authKey.split(' ')[1];
+    const token = rawToken.replace(/,$/, ''); 
+    //const token = authKey.split(" ")[1].trim();
     console.log(token)
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { id, name } = decoded;
